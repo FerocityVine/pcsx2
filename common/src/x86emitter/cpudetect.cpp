@@ -297,12 +297,9 @@ void x86capabilities::Identify()
 
     if ((Flags2 >> 27) & 1) // OSXSAVE
     {
-        if ((xgetbv(0) & 6) == 6) // XFEATURE_ENABLED_MASK[2:1] = '11b' (XMM state and YMM state are enabled by OS).
-        {
-            hasAVX = (Flags2 >> 28) & 1; //avx
-            hasFMA = (Flags2 >> 12) & 1; //fma
-            hasAVX2 = (SEFlag >> 5) & 1; //avx2
-        }
+        hasAVX = (Flags2 >> 28) & 1; //avx
+        hasFMA = (Flags2 >> 12) & 1; //fma
+        hasAVX2 = (SEFlag >> 5) & 1; //avx2
     }
 
     hasBMI1 = (SEFlag >> 3) & 1;
